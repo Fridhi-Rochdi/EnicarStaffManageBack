@@ -1,0 +1,113 @@
+### Authentication Endpoints
+
+### Register a new user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@enicarthage.tn",
+  "password": "password123",
+  "department": "Informatique"
+}
+
+###
+
+### Login
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "prof@enicarthage.tn",
+  "password": "prof123"
+}
+
+###
+
+### Ticket Endpoints (Require Bearer Token)
+
+### Get all tickets
+GET http://localhost:8080/api/tickets
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### Get ticket by ID
+GET http://localhost:8080/api/tickets/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### Get tickets by status
+GET http://localhost:8080/api/tickets/status/EN_ATTENTE
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### Get my tickets
+GET http://localhost:8080/api/tickets/my-tickets
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### Create a ticket (multipart/form-data)
+POST http://localhost:8080/api/tickets
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="ticket"
+Content-Type: application/json
+
+{
+  "title": "Cours de Mathématiques",
+  "description": "Cours",
+  "actProf": "Prof. Dupont",
+  "totalNumber": 30
+}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="cours.pdf"
+Content-Type: application/pdf
+
+< ./path/to/file.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+### Create a ticket (JSON only, no file)
+POST http://localhost:8080/api/tickets
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="ticket"
+Content-Type: application/json
+
+{
+  "title": "TD Algorithmique",
+  "description": "Traveaux Dérigés",
+  "actProf": "Prof. Martin",
+  "totalNumber": 25
+}
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+### Update a ticket
+PUT http://localhost:8080/api/tickets/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "title": "Cours de Mathématiques - Mis à jour",
+  "status": "EN_COURS",
+  "totalNumber": 35
+}
+
+###
+
+### Delete a ticket (Admin only)
+DELETE http://localhost:8080/api/tickets/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###

@@ -1,0 +1,59 @@
+{
+  "endpoints": {
+    "base_url": "http://localhost:8080/api",
+    "auth": {
+      "login": "/auth/login",
+      "register": "/auth/register",
+      "me": "/auth/me"
+    },
+    "tickets": {
+      "all": "/tickets",
+      "myTickets": "/tickets/my-tickets",
+      "create": "/tickets",
+      "byId": "/tickets/{id}",
+      "update": "/tickets/{id}",
+      "updateStatus": "/tickets/{id}/status",
+      "delete": "/tickets/{id}"
+    },
+    "test": {
+      "health": "/test/health",
+      "public": "/test/public"
+    }
+  },
+  "fileTypes": [
+    { "value": "COURS", "label": "Cours" },
+    { "value": "TRAVEAUX_DIRIGES", "label": "Traveaux Dérigés" },
+    { "value": "TRAVEAUX_PRATIQUES", "label": "Traveaux Pratiques" },
+    { "value": "COURS_INTEGRE", "label": "Cour Integré" },
+    { "value": "EXAMEN", "label": "Examen" },
+    { "value": "EXAMEN_INTELLIGENT", "label": "Examen Intelligent" }
+  ],
+  "statuses": [
+    { "value": "EN_ATTENTE", "label": "En Attente" },
+    { "value": "EN_COURS", "label": "En Cours" },
+    { "value": "TERMINE", "label": "Terminé" },
+    { "value": "ANNULE", "label": "Annulé" }
+  ],
+  "roles": [
+    { "value": "ADMIN", "label": "Administrateur" },
+    { "value": "PROFESSOR", "label": "Professeur" },
+    { "value": "STAFF", "label": "Personnel" }
+  ],
+  "defaultUsers": [
+    {
+      "email": "admin@enicarthage.tn",
+      "password": "admin123",
+      "role": "ADMIN"
+    },
+    {
+      "email": "prof.dupont@enicarthage.tn",
+      "password": "prof123",
+      "role": "PROFESSOR"
+    },
+    {
+      "email": "staff@enicarthage.tn",
+      "password": "staff123",
+      "role": "STAFF"
+    }
+  ]
+}
